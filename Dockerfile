@@ -1,2 +1,2 @@
-FROM ubuntu
+FROM cheelvis/docker
 ADD . /var/www/html
