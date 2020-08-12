@@ -9,10 +9,10 @@ select permanent agent. specify the remote root directory. for ubuntu it is;
 to master.
 5-After the agents are connected to the master, create 3 jobs;
 job 1: Git-job which will pull the code from the github repo to the node you
-will specify, under scm select Git and specify the url, under Build Trigger,
+will specify, under scm select Git and specify the url, under Build Trigger, select
 Github build trigger for GiTscm polling, select restrict where this project 
 can be run and specify the server, then save.
-job 2: build-website, restrict the job to run on the same server as job 1,
+job 2: build-website, this will build the website and wrap it to a docker container. restrict the job to run on the same server as job 1,
 under Build, pass the following commands under exercute shell command
 sudo docker rm -f $(sudo docker ps -a -q)
 sudo docker build <directory where code is> -t <website>
@@ -21,7 +21,7 @@ job 3: specify the github url and restrict the job to run only on the
 other server. specify the same commands as in job 2 but remember to specify 
 the correct directory where the job will be, save.
 
-create a pipeline, under post build action, select build other project by 
+create a pipeline, under post build action, select build other projects by 
 configuring J1 to trigger J2 and J2 to trigger J3
 
 
